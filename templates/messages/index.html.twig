@@ -1,0 +1,50 @@
+{%extends 'pins/layouts/base.html.twig'%}
+
+{%block title 'Messagerie'%}
+
+{% block body %}
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Messagerie</h1>
+                <p>Boite de reception: {{app.user.received|length}}</p>
+                <p>Boite d'envoi: {{app.user.send|length}} </p>
+                
+                <a href="#offcanvasExample" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample">voir la messagerie</a>
+                <a href="#">Envoyer un message</a>
+
+  
+            </div>
+
+               
+            </div>
+        </div>
+    </section>
+    <div class="offcanvas-body">
+                    
+        <div class="dropdown mt-3">
+            <div class="btn btn-secondary dropdown-toggle" type= "button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title" id="offcanvasExampleLabel">In box
+                    <button type="button" class ="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="close"></button>
+                </h2>
+            </div>
+            <div class="offcanvas-body">
+                <div class="list-group">
+                    <a href="{{path('app_messages')}}" class="list-group-item list-group-item-acton active">Accueil</a>
+                </div>
+                <div class="list-group">
+                    <a href="{{path('app_messages')}}" class="list-group-item list-group-item-acton active">boite de reception</a>
+                </div>
+                <div class="list-group">
+                    <a href="{{path('app_messages')}}" class="list-group-item list-group-item-acton active">boite d'envoi</a>
+                </div>
+            </div>
+    </div>
+   
+
+{% endblock %}

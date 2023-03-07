@@ -1,0 +1,30 @@
+{%extends 'pins/layouts/base.html.twig'%}
+
+
+{%block body%}
+    <div class="col-md-6">
+        <h3>Boite de reception</h3>
+        <p>vous avez recu {{pluralize(app.user.received|length , 'message')}}</p>
+
+        {%for message in app.user.received%}
+            {%if message.isRead == 0%}
+                {% set text = "non lu" %}
+            {%else%}
+                {% set text = "lu" %}
+            {%endif%}
+                <div >De: <a href="{{path('app_messages_read', {id: message.id})}}">{{message.sender.email}}</a></div> 
+                <div >date: {{message.createdAt|date}}</div>
+                <div>Action: <a href="{{path('app_messages_delete', {id: message.id})}}">supprimer</a></div> |
+                <div>Action: <a href="{{path('app_messages_send')}}">Repondre</a></div> 
+                <div>statut: {{text}}</div>
+                <br>
+                       
+                   
+         {%endfor%}
+
+
+    </div>
+   
+           
+
+{%endblock%}
